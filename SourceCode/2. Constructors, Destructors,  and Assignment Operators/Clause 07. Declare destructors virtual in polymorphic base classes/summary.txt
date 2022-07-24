@@ -1,0 +1,9 @@
+ * polymorphic （多态性质的）base class 应该声明一个virtual 析构函数。
+ 如果class 带有任何virtual 析构函数，它就应该拥有一个virtual析构函数。
+
+ * Classes 的设计目的如果不是作为 base class使用， 或不是为了具备多态性质，
+ 就不应该为其声明virtual 析构函数. 
+
+ * 不是所有 base class 的设计目的都是为了多态，在这个例子中，TimeKeeper的设计
+ 显然是为了让其指针指向不同的 derived class 来实现一个虚函数完成不同的工作。
+ 但是有些base class 不是为了多态用途，那么就也就不需要有virtual 析构函数.
