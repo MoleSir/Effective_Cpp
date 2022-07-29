@@ -87,7 +87,7 @@ private:
 
 
 
-请记住：
+## 请记住：
 
 - 复制 RAII 对象必须一并复制其管理的资源，所以资源的copying行为决定 RAII 对象的copying 行为；
 - 普遍常见的 RAII class copying 行为是：抑制 copying 、使用引用计数、深拷贝、转移资源；
