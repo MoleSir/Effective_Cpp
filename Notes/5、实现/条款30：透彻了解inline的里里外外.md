@@ -33,3 +33,12 @@ inline const T& std::max(const T& a, const T& b)
 ​	"max 是个 template“ 带出一项观察结果：我们发现 inline 函数和 template 两者通常被定义于头文件中。但 function template 不是必须为 inline:
 
 ​	Inline 函数通常一定被置于头文件中，因为大多数建置环境，在编译过程中进行 inlining 
+
+---
+
+
+
+## 请记住
+
+- 将大多数 inlining 限制在小型、被频繁使用的函数上，这可使日后调用调试过程和二进制升级更容易秒也可以使得潜在的代码膨胀问题最小化，使得程序的速度提升最大化；
+- 不要只因为function template 出现在头文件，就将它们声明为 inline；
