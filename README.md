@@ -37,9 +37,9 @@ C++11 后可以使用 `= delete` 关键字；
 
 ### :star:条款 7
 
-带多态性质的 base classes 应该声明一个 virtual 析构函数；
+带多态性质的 base classes 应该声明一个 `virtual` 析构函数；
 
-Classes 的设计目的如果不是作为 base classes 使用，不应该带 virtual 析构
+Classes 的设计目的如果不是作为 base classes 使用，不应该带 `virtual` 析构
 
 ### 条款 8
 
@@ -49,7 +49,7 @@ Classes 的设计目的如果不是作为 base classes 使用，不应该带 vir
 
 ### 条款 9
 
-在构造函数和析构期间不要调用 virtual 函数，因为此时子类还没构造；
+在构造函数和析构期间不要调用 `virtual` 函数，因为此时子类还没构造；
 
 ### :star:条款 10
 
@@ -75,9 +75,9 @@ Classes 的设计目的如果不是作为 base classes 使用，不应该带 vir
 
 ### 条款 14
 
-复制 RAII 对象必须一并复制其管理的资源，所以资源的copying行为决定 RAII 对象的copying 行为；
+复制 RAII 对象必须一并复制其管理的资源，所以资源的 `copying` 行为决定 RAII 对象的 `copying` 行为；
 
-可以：抑制 copying 、使用引用计数、深拷贝、转移资源；
+可以：抑制 `copying` 、使用引用计数、深拷贝、转移资源；
 
 ### 条款 15
 
@@ -92,9 +92,9 @@ Classes 的设计目的如果不是作为 base classes 使用，不应该带 vir
 
 ### :star:条款 16
 
-在 new 中使用 []，在 delete 中也要使用 delete []；
+在 `new` 中使用 `[]`，在 `delete` 中也要使用 `delete []`；
 
-如果没有在 new 中使用 []，一定不要使用 delete[]；
+如果没有在 `new` 中使用 `[]`，一定不要使用 `delete[]`；
 
 ### 条款 17
 
@@ -126,21 +126,21 @@ C++ 编译器不保证一句指向内部的顺序；
 
 ### :star:条款 22
 
-将成员变量声明为 private；
+将成员变量声明为 `private`；
 
 ### 条款 23
 
-用 non-member non-friend 函数替换 member 函数。这样做可以增加封装性、包裹弹性和机能拓展性；
+用 `non-member` 、`non-friend` 函数替换 `member` 函数。这样做可以增加封装性、包裹弹性和机能拓展性；
 
 ### 条款 24
 
-如果需要为某个函数的所有参数（包括被 this 指针所指的能够隐喻参数）进行类型转换，使用一个 non-member 函数；
+如果需要为某个函数的所有参数（包括被 this 指针所指的能够隐喻参数）进行类型转换，使用一个 `non-member` 函数；
 
-member 函数不允许 this 进行隐式类型转换；
+`member` 函数不允许 this 进行隐式类型转换；
 
 ### 条款 25
 
-当 std::swap 对自定义类型效率不高时，提供一个 swap 成员函数，并且确定其不抛出异常；
+当 `std::swap` 对自定义类型效率不高时，提供一个 `swap` 成员函数，并且确定其不抛出异常；
 
 
 
@@ -154,7 +154,7 @@ member 函数不允许 this 进行隐式类型转换；
 
 如果可以，尽量避免转型，特别是在注重效率的代码中避免；
 
-C++ 提供四种 cast，若干需要转型，使用它们而不是旧式转型；
+C++ 提供四种 `cast`，若干需要转型，使用它们而不是旧式转型；
 
 ### :star:条款 28
 
@@ -168,8 +168,8 @@ C++ 提供四种 cast，若干需要转型，使用它们而不是旧式转型�
 
 ### :interrobang:条款 30
 
-- 将大多数 inlining 限制在小型、被频繁使用的函数上，这可使日后调用调试过程和二进制升级更容易秒也可以使得潜在的代码膨胀问题最小化，使得程序的速度提升最大化；
-- 不要只因为function template 出现在头文件，就将它们声明为 inline；
+- 将大多数 `inlining` 限制在小型、被频繁使用的函数上，这可使日后调用调试过程和二进制升级更容易秒也可以使得潜在的代码膨胀问题最小化，使得程序的速度提升最大化；
+- 不要只因为 `function template` 出现在头文件，就将它们声明为 `inline`；
 
 ### :star:条款 31
 
@@ -183,7 +183,7 @@ C++ 的两个 classes 直接不可能互相包含对方成员，无法计算大�
 
 ### 条款 32
 
-”public继承“意味着 is-a。使用在 base classes 身上的事情一定适用在 derived 身上；
+`public` 继承意味着 is-a。使用在 base classes 身上的事情一定适用在 derived 身上；
 
 ### :star:条款 33
 
@@ -197,13 +197,13 @@ C++ 的两个 classes 直接不可能互相包含对方成员，无法计算大�
 
 ### 条款 35
 
-- virtual 函数的替代方案包括 NVI 手法及 Strategy 设计模式的多种模式。NVI 手法自身是一个特殊形式的 Template Method 设计模式；
-- 将机能从成员函数转到 class 外部函数，带来一个缺点：非成员函数无法访问 class 的 non-public 成员；
+- `virtual` 函数的替代方案包括 NVI 手法及 Strategy 设计模式的多种模式。NVI 手法自身是一个特殊形式的 Template Method 设计模式；
+- 将机能从成员函数转到 class 外部函数，带来一个缺点：非成员函数无法访问 class 的 `non-public` 成员；
 - function 对象的行为就像一般的函数指针。这样的对象可以接纳 “与给定之目标签名式兼容”的所有可调用物；
 
 ### 条款 36
 
-绝不重新定义继承而来的non-virtual函数
+绝不重新定义继承而来的 `non-virtual` 函数
 
 ### 条款 37
 
@@ -211,13 +211,13 @@ C++ 的两个 classes 直接不可能互相包含对方成员，无法计算大�
 
 ### 条款 38
 
-- 复合与public 继承意义完全不同；
-- 复合-> has-a，public继承-> is-a
+- 复合与 `public` 继承意义完全不同；
+- 复合-> has-a，`public` 继承-> is-a
 
 ### 条款 39
 
-- private 继承意味着 is-implemented-in-terms of ，与复合关系类型，但一般不适应 private 继承
-- 但是 private 继承可以造成 empty base 最优化。对致力于“对象尺寸最小化”的程序库开发者来说很重要；
+- `private` 继承意味着 is-implemented-in-terms of ，与复合关系类型，但一般不适应 `private` 继承
+- 但是 `private` 继承可以造成 empty base 最优化。对致力于“对象尺寸最小化”的程序库开发者来说很重要；
 
 ### 条款 40
 
@@ -229,37 +229,37 @@ C++ 的两个 classes 直接不可能互相包含对方成员，无法计算大�
 
 ### 条款 41
 
-- classes 和 template 都支持接口和多态；
-- 对 classes 而言接口都是显示的，以函数签名为中心，多态则是通过 virtual 函数发生在运行期；
-- 对 template 而言接口是隐式的，奠基于有效表达式，多态则是通过 template 具现化和函数重载解析发生在编译期；
+- classes 和 `template` 都支持接口和多态；
+- 对 classes 而言接口都是显示的，以函数签名为中心，多态则是通过 `virtual` 函数发生在运行期；
+- 对 `template` 而言接口是隐式的，奠基于有效表达式，多态则是通过 `template` 具现化和函数重载解析发生在编译期；
 
 ### :star:条款 42
 
-- 声明 template 参数时，前缀 class 与 typename 等效；
+- 声明 `template` 参数时，前缀 class 与 `typename` 等效；
 
-- 请使用 typename 标识嵌套从属类型名称，这很重要，因为编译器不知道模板中的成员是不是类型，这时需要手动告诉编译器；
+- 请使用 `typename` 标识嵌套从属类型名称，这很重要，因为编译器不知道模板中的成员是不是类型，这时需要手动告诉编译器；
 
     ```c++
     typename C::const_iterator iter(container.begin());
     ```
 
-- 但不得在 base class list 或 member initialization list 中以 typename 作为 base class 的修饰符，就是编译器肯定知道是类型的地方别用；
+- 但不得在 base class list 或 member initialization list 中以 `typename` 作为 base class 的修饰符，就是编译器肯定知道是类型的地方别用；
 
 ### :star:条款 43
 
-在 derived class templates 内通过 this-> 指涉 base class templates 内的成员名称；使用 using 表达式也可以；
+在 derived class templates 内通过 `this->` 指涉 base class templates 内的成员名称；使用 `using` 表达式也可以；
 
 否则编译器找不到；
 
 ### 条款 44
 
-- 因非类型模板参数而造成的代码膨胀，往往可以消除，做法是以函数参数或 class 成员变量替换 template 参数；
+- 因非类型模板参数而造成的代码膨胀，往往可以消除，做法是以函数参数或 class 成员变量替换 `template` 参数；
 - 因类型参数而造成的代码膨胀，往往可以降低，做法是让有完全相同的二进制表达式的具体类型共享实现代码；
 
 ### 条款 45
 
 - 使用成员函数模板生成可接受所有兼容类型的函数；
-- 如果声明的成员函数模板用于泛化 copy 构造，还是需要声明正常的 copy 构造；
+- 如果声明的成员函数模板用于泛化 `copy` 构造，还是需要声明正常的 `copy` 构造；
 
 成员函数模板可以使得指针指针适用于继承体系的多态实现；
 
@@ -278,12 +278,12 @@ public:
 
 需要类型转换时请为模板定义非成员函数
 
-编写一个 class template，而它所提供之 “于此 template 相关的” 函数支持 “所有参数之隐式类型转换” 时，请将那些函数定义为 “class template” 内部的友元函数；
+编写一个 `class template`，而它所提供之 “于此 `template` 相关的” 函数支持 “所有参数之隐式类型转换” 时，请将那些函数定义为 `class template` 内部的友元函数；
 
 ### :star:条款 47
 
-- traits_classes 使得类型相关信息在编译期间可用，它们以模板和模板特化实现；
-- 整合重载技术之后，traits 有可能在编译器对类型执行 if else；
+- `traits_classes` 使得类型相关信息在编译期间可用，它们以模板和模板特化实现；
+- 整合重载技术之后，traits 有可能在编译器对类型执行 `if else`；
 
 对迭代器类型的萃取就十分常用；
 
