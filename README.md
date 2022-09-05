@@ -291,3 +291,44 @@ public:
 
 模板元编程可以将工作从运行期移往编译器，因而得以实现早期错误侦察和更高效的执行效率；
 
+
+
+## 定制 new 和 delete
+
+### 条款49
+
+- `set_new_handler` 允许我们指定一个函数，在内存分配无法获得满足时被调用；
+
+- 现代 C++ 默认的 `new` 会在发生失败抛出异常 `std::bad_alloc`，而不是返回 `NULL`  指针；
+
+- 也可以使用 `Nothrow new` ，使得 `new` 在内存不足时不抛出异常，而是返回 `NULL`，但其不能保证构造函数不抛出异常
+
+    ````c++
+    Widget* pw1 = new (std::nothrow) Widget();
+    ````
+
+    本质上，这个 `new` 调用了一个 `placement new`，`()` 内部传入的是第二个参数；
+
+### 条款50
+
+- 有许多理由需要些个自定义的 new 和 delete，包括改善效能、对 heap 运用错误进行调试、收集 heap 适用信息；
+
+### 条款51
+
+- `operator new` 应该包含一个无穷循环，并在其中尝试分配内存，如果无法满足内存需求，就该调用 `new-handler`。它还应该有能力处理 0 字节申请。Class 专属版本则还应该处理 “比正确大小更大的错误申请”；
+- `operator delete` 应该在收到 null 指针是不做任何事情。Class 专属版本应该处理 “比正确大小更大的（错误）申请”；
+
+### :star:条款52
+
+- `placement new` 是 `operator new` 对正常 `operator new` 的重载，其具有除了 `size` 外的多个参数；
+
+- 调用 `placement new` 的方式是在 `new` 后加括号填入实参：
+
+    ````c++
+    Widget* pw = new (std::cout) Widget();
+
+- 当写一个 `placement new`，需要保证给出对应的 `placement operator delete`。如果没有这样做，程序可能会发生隐微而时断时续的内存泄露；
+
+-  `placement delete` 只能在 `placement new` 调用成功，但构造函数抛出异常时，由 C++ 自动调用；
+
+- 当声明 `placement new` 和 `placement delete` ，不要无意识得掩盖了它们的正常版本；  
